@@ -5,62 +5,14 @@ Spyder Editor
 This is a temporary script file.
 """
 
-import re
+
 from sklearn.datasets import load_files
 import pickle
-from nltk.corpus import stopwords
-from nltk.stem import WordNetLemmatizer
-from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
+from TextPreprocessor import TextProcessor
 
-
-class TextProcessor:
-    
-    def pre_process_documents(self,input_data):
-        
-        documents=[]
-        
-        stemmer = WordNetLemmatizer()
-        
-        for sentence in range(0,len(X)):
-            
-            #remove special character
-            document = re.sub(r'\W',' ',str(X[sentence]))
-            
-            #remove single character
-            document = re.sub(r'\s+[a-zA-z]\s+',' ',document)
-            
-            #convert double space to single space
-            document = re.sub(r'\s+',' ',document)
-            
-            #remove b prefix
-            document = re.sub(r'^b\s+', '', document)
-            
-            #to lower case
-            document = document.lower()
-            
-            #lemmetization
-            #words = nltk.word_tokenize(document)
-            
-            words= document.split()
-            
-            document = [stemmer.lemmatize(word) for word in words]
-            
-            document = ' '.join(document)
-            
-            documents.append(document)
-            
-        return documents
-                 
-    def words_to_vectors(self,cleansed_data):
-        
-        tfidf_converter= TfidfVectorizer(max_features=1500,min_df=5,max_df=0.7,stop_words=stopwords.words('english'))
-        
-        return tfidf_converter.fit_transform(cleansed_data).toarray()   
-        
-    
 
 if __name__=="__main__":
     
@@ -111,7 +63,7 @@ if __name__=="__main__":
     
     #save model
     
-    with open('movie_review_classifier', 'wb') as model:  
+    with open('E:\Personal\ML_Journey\model\movie_classifier,pkl', 'wb') as model:  
         pickle.dump(classifier,model)
         
     print("Model saved successfully...")
