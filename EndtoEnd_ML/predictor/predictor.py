@@ -13,8 +13,8 @@ import pickle
 
 app = Flask(__name__)
 
-vectorizer_path=r'E:\Personal\ML_Journey\model\vectorizer.pkl'
-classifier_path=r'E:\Personal\ML_Journey\model\spam_classifier.pkl'
+vectorizer_path=r'D:\Personal\ML_Journey\model\vectorizer.pkl'
+classifier_path=r'D:\Personal\ML_Journey\model\spam_classifier.pkl'
 
 
 def pre_process_message(lemmatizer,message):
